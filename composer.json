@@ -1,0 +1,14 @@
+{
+    "name": "pipelinersales/pipeliner-api-client",
+    "version": "1.0.0",
+    "description": "Pipeliner REST API client library",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    
+    "autoload": {
+        "psr-0": {
+            "PipelinerSales\\": "src/"
+        }
+    }
+}

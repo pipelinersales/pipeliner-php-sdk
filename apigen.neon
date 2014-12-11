@@ -1,0 +1,41 @@
+source:
+	- src
+	
+destination: doc-api
+
+extensions:
+	- php
+	
+exclude: []
+skipDocPath: []
+skipDocPrefix:
+	- PipelinerSales\ApiClient\Spl
+	
+charset:
+	- auto
+	
+main: null
+title: null
+baseUrl: null
+googleCseId: null
+googleAnalytics: null
+groups: auto
+
+autocomplete:
+	- classes
+	- constants
+	- functions
+	
+accessLevels:
+	- public
+	- protected
+	
+internal: false
+php: false
+tree: true
+deprecated: false
+todo: false
+sourceCode: true
+download: false
+quiet: false
+debug: false
