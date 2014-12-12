@@ -4,7 +4,7 @@ Pipeliner API client library for PHP
 Introduction
 ------------
 
-This library serves as a convenient wrapper around Pipeliner's [REST API](http://workspace.pipelinersales.com/community/api).
+This library serves as a convenient wrapper around [Pipeliner](http://www.pipelinersales.com/)'s [REST API](http://workspace.pipelinersales.com/community/api).
 You can also view the [API documentation for the individual classes](http://pipelinersales.github.io/pipeliner-php-sdk-docs/index.html).
 
 Installing
