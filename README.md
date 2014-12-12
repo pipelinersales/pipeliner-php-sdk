@@ -160,8 +160,7 @@ into a format expected by the server. The date/time will also be converted to UT
 
 #### Modifying and saving data
 
-After setting some of an entity's fields, the entity must be saved to the server with the {api Repository.RepositoryInterface::save}
-`save`{/api} method on the proper repository object.
+After setting some of an entity's fields, the entity must be saved to the server with the [`save`](http://pipelinersales.github.io/pipeliner-php-sdk-docs/class-PipelinerSales.ApiClient.Repository.RepositoryInterface.html#_save) method on the proper repository object.
 
 ```php
 $account = $pipeliner->accounts->getById('ID-219034053254');
