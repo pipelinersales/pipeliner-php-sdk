@@ -63,7 +63,7 @@ class Version
                 'OpptyProductRelation' => 'OpptyProductRelations',
                 'ProductCategory' => 'ProductCategories',
                 'ProductPriceList' => 'ProductPriceLists',
-                'ProductPriceListPrice' => 'ProductPriceListPrice'
+                'ProductPriceListPrice' => 'ProductPriceListPrices'
             )
         ),
         15 => array(
