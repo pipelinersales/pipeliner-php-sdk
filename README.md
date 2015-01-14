@@ -39,7 +39,7 @@ $pipeliner = PipelinerClient::create($url, $pipelineId, $token, $password);
 The API token and password for a particular pipeline can be found in the <code>Sales Pipeline &rarr; API Access</code> section
 of customer portal.
 
-The `create` method sends a HTTP request in order to obtain the pipeline version.
+The `create` method sends a HTTP request in order to obtain the existing entity types.
 
 ### Loading data
 
