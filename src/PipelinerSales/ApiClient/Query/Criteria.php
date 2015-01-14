@@ -52,7 +52,8 @@ class Criteria
     /**
      * Creates a new set of criteria.
      * @param mixed $criteria initial criteria to use, see {@see set}
-     * @param string $dateTimeFormat format to use for converting DateTime objects
+     * @param string|null $dateTimeFormat format to use for converting DateTime objects,
+     * null means default format for the latest version
      */
     public function __construct($criteria = array(), $dateTimeFormat = Defaults::DATE_FORMAT, $defaultLimit = Defaults::DEFAULT_LIMIT)
     {

@@ -10,7 +10,6 @@ namespace PipelinerSales\ApiClient;
 
 use PipelinerSales\ApiClient\Http\CurlHttpClient;
 use PipelinerSales\ApiClient\Http\PipelinerHttpException;
-use PipelinerSales\ApiClient\Model\Version;
 use PipelinerSales\ApiClient\Repository\RepositoryInterface;
 use PipelinerSales\ApiClient\Repository\RepositoryFactoryInterface;
 use PipelinerSales\ApiClient\Repository\Rest\RestRepositoryFactory;
@@ -47,7 +46,7 @@ use PipelinerSales\ApiClient\Repository\Rest\RestInfoMethods;
  * @property-read RepositoryInterface $products
  * @property-read RepositoryInterface $productCategories (pipeline version 14+)
  * @property-read RepositoryInterface $productPriceLists (pipeline version 14+)
- * @property-read RepositoryInterface $productPriceListPrice (pipeline version 14+)
+ * @property-read RepositoryInterface $productPriceListPrices (pipeline version 14+)
  * @property-read RepositoryInterface $reasonOfCloses
  * @property-read RepositoryInterface $relevancies (pipeline version 11-14)
  * @property-read RepositoryInterface $reminders
@@ -80,11 +79,12 @@ class PipelinerClient
         $this->setEntityTypes($entityTypes);
         $this->repositoryFactory = $repositoryFactory;
         $this->infoMethods = $infoMethods;
+        $this->pipelineVersion = null;
     }
 
     /**
      * Creates a PipelinerClient object with sensible default configuration.
-     * Will perform a HTTP request to fetch the pipeline version.
+     * Will perform a HTTP request to fetch the existing entity types for the pipeline.
      *
      * @param string $url base url of the REST server, without the trailing slash
      * @param string $pipelineId the unique team pipeline id
@@ -105,19 +105,9 @@ class PipelinerClient
         $repoFactory = new RestRepositoryFactory($baseUrl, $httpClient, $dateTimeFormat);
 
         $infoMethods = new RestInfoMethods($baseUrl, $httpClient);
-        $version = $infoMethods->fetchTeamPipelineVersion();
-
-        if ($version < Version::EARLIEST_VERSION) {
-            throw new PipelinerClientException(
-                'Unsupported team pipeline version: ' . $version .
-                ' (supported versions are ' . Version::EARLIEST_VERSION . ' to ' . Version::LATEST_VERSION . ')'
-            );
-        }
-
-        $entityTypes = Version::getEntityTypes($version);
+        $entityTypes = array_flip($infoMethods->fetchEntityPublic());
 
         $client = new PipelinerClient($entityTypes, $repoFactory, $infoMethods);
-        $client->pipelineVersion = $version;
         return $client;
     }
 
@@ -189,6 +179,9 @@ class PipelinerClient
 
     public function getPipelineVersion()
     {
+        if ($this->pipelineVersion === null) {
+            $this->pipelineVersion = $this->infoMethods->fetchTeamPipelineVersion();
+        }
         return $this->pipelineVersion;
     }
 
