@@ -1,6 +1,6 @@
 {
     "name": "pipelinersales/pipeliner-api-client",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "description": "Pipeliner CRM API client library",
     "require": {
