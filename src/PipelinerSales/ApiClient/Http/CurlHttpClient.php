@@ -39,7 +39,8 @@ class CurlHttpClient implements HttpInterface
                 CURLOPT_HTTPHEADER,
                 array(
                     'Content-Length: ' . strlen($rawPayload),
-                    'Content-Type: ' . $contentType
+                    'Content-Type: ' . $contentType,
+                    'Expect:'
                 )
             );
         }
